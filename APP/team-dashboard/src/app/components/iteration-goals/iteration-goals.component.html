@@ -1,0 +1,29 @@
+<div class="iteration-goals">
+  <app-header
+    [title]="title"
+    [color]="color"
+  >
+  </app-header>
+  <div class="cards">
+    <app-card title="Current Iteration">
+      <ul>
+        <li *ngFor="let goal of currentGoals.goals">
+          <div class="checkbox">
+            <input type="checkbox" (change)="saveStatus(goal)" name="checkbox" id="checkbox1" [checked]="goal.complete">
+            <label for="checkbox1">{{goal.name}}</label>
+          </div>
+        </li>
+      </ul>
+    </app-card>
+    <app-card title="Last Iteration">
+      <ul>
+        <li *ngFor="let goal of currentGoals.goals">
+          <div class="checkbox">
+            <input type="checkbox" (change)="saveStatus(goal)" name="checkbox" id="checkbox1" [checked]="goal.complete">
+            <label for="checkbox1">{{goal.name}}</label>
+          </div>
+        </li>
+      </ul>
+    </app-card>
+  </div>
+</div>

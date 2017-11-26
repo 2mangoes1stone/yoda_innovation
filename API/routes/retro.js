@@ -14,7 +14,7 @@ router.get('/retro', (req, res) => {
   }) 
 });
 
-// Read single movie, like show action in rails
+// read single
 router.get('/retro/:id', (req,res) => {
   const id = req.params.id
   Retro.findById(id)
@@ -27,7 +27,7 @@ router.get('/retro/:id', (req,res) => {
     })
 })
 
-// Create Team
+// Create
 router.post('/retro', (req,res) => {
   const newRetro = req.body
     Retro.create(newRetro)
@@ -37,6 +37,19 @@ router.post('/retro', (req,res) => {
       .catch((error) => {
         res.status(500).json({ error: error })
       })
+})
+
+// Update/Edit
+router.patch('/retro/:id', (req,res) => {
+  const oldRetro = Retro.findById(req.params.id)
+  const updatedRetro = req.body
+  oldRetro.update()
+    .then(() => {
+      res.json(updatedRetro)
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
 })
 
 

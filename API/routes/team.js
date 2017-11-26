@@ -14,7 +14,7 @@ router.get('/teams', (req, res) => {
   }) 
 });
 
-// Read single movie, like show action in rails
+// Read single
 router.get('/teams/:id', (req,res) => {
   const id = req.params.id
   Team.findById(id)
@@ -37,6 +37,19 @@ router.post('/teams', (req,res) => {
       .catch((error) => {
         res.status(500).json({ error: error })
       })
+})
+
+// Update/Edit
+router.patch('/teams/:id', (req,res) => {
+  const oldTeam = Team.findById(req.params.id)
+  const updatedTeam = req.body
+  oldTeam.update()
+    .then(() => {
+      res.json(updatedTeam)
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
 })
 
 

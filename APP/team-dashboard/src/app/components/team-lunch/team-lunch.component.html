@@ -1,0 +1,38 @@
+<div class="team-lunch">
+    <app-header
+      [title]="title"
+      [color]="color"
+    >
+    </app-header>
+    <div class="cards">
+      <app-card title="Next Lunch">
+        <div class="lunch" *ngIf="lunch">
+          <h2>{{lunch.place}}</h2>
+          <h5>{{lunch.date}}</h5>
+        
+        </div>
+        <div class="no_lunch" *ngIf="!lunch && !addInProgress">
+          <h3>😱 No lunch. Plan one below:</h3>
+          <form [formGroup]="form">
+              <input type="text" formControlName="place" class="textInput" placeholder="Where?" >
+              {{this.form.get('place').value}}
+              <ng2-flatpickr [config]="datePickerOptions" class="dateInput" formControlName="date" placeholder="When?"></ng2-flatpickr>
+              {{this.form.get('date').value}}
+          </form>
+        </div>
+        <div class="add_in_progress" >
+          
+        </div>
+        
+        <button class="add" (click)="addLunchPressed()">Add Lunch</button>
+      </app-card>
+
+      <app-card title="Search Restaurants">
+        <div class="widget_wrap" style="width:100%;height:400px;display:inline-block;">
+          <iframe src="https://www.zomato.com/widgets/res_search_widget.php?entity_id=109781&entity_type=zone&city_id=259&theme=red&hideCitySearch=on&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0">
+          </iframe>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  
