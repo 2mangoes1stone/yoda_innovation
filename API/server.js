@@ -2,13 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const retroRouter = require('./routes/retro');
+const teamsRouter = require('./routes/team');
 
 const server = express();
-
-logErrors = (err) => {
-  console.error(err.stack);
-  next(err);
-};
 
 // middleware
 server.use(bodyParser.json());
@@ -26,6 +23,8 @@ server.get('/', function(request, response) {
 
 // routes
 server.use('/api', [
+  retroRouter,
+  teamsRouter
 ]);
 
 // Handle errors by returning JSON
