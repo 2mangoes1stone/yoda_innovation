@@ -1,0 +1,29 @@
+.sidebar {
+  background-color: #2E2E2E;
+  height: 100%;
+  width: 100px;
+
+  .icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .app-icon {
+      margin-bottom: 30px;
+
+      .icon {
+        width: 60px;
+        border-radius: 50%;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+          box-shadow: 0 0 0 4px #2196F3;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+}
+

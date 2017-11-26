@@ -1,0 +1,17 @@
+@import "../common/common_styles";
+
+$margin: 16px;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  background-color: #2196F3;
+
+  button {
+    width: 40px;
+    margin-top: $margin;
+    margin-left: $margin;
+  }
+}
