@@ -43,7 +43,7 @@ router.post('/teams', (req,res) => {
 router.patch('/teams/:id', (req,res) => {
   const oldTeam = Team.findById(req.params.id)
   const updatedTeam = req.body
-  oldTeam.update()
+  oldTeam.findOneAndUpdate(updatedTeam)
     .then(() => {
       res.json(updatedTeam)
     })

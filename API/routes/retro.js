@@ -43,7 +43,7 @@ router.post('/retro', (req,res) => {
 router.patch('/retro/:id', (req,res) => {
   const oldRetro = Retro.findById(req.params.id)
   const updatedRetro = req.body
-  oldRetro.update()
+  oldRetro.findOneAndUpdate(updatedRetro)
     .then(() => {
       res.json(updatedRetro)
     })
