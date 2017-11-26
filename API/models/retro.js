@@ -5,7 +5,8 @@ require('./init');
 const retroSchema = mongoose.Schema({
 	number: Number,
 	retroAction: [{
-		description: String
+		description: String,
+		done: Boolean
 	}]
 });
 
