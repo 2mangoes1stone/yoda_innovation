@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/teams', (req, res) => {  
   Team.find()
   .populate('retro.number')
+  .populate('goals.todo')
   .then((teams) => {
     res.json(teams)
   })
@@ -19,6 +20,7 @@ router.get('/teams/:id', (req,res) => {
   const id = req.params.id
   Team.findById(id)
     .populate('retro.number')
+    .populate('goals.todo')
     .then((team) => {
       res.json(team)
     })
