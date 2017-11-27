@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('./init');
 
 const retroSchema = [{
-	"retroNumber": {
+	"number": {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Retro'
 	}

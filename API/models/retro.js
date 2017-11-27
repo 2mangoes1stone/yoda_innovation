@@ -3,7 +3,7 @@ require('./init');
 
 
 const retroSchema = mongoose.Schema({
-	number: Number,
+	retroNumber: Number,
 	retroAction: [{
 		description: String,
 		done: Boolean
