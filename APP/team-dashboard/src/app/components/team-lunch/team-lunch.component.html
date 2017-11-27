@@ -8,23 +8,21 @@
       <app-card title="Next Lunch">
         <div class="lunch" *ngIf="lunch">
           <h2>{{lunch.place}}</h2>
-          <h5>{{lunch.date}}</h5>
-        
+          <h5>{{lunch.date | date:'EEE d LLL yyyy - h:mm aaa'}}</h5>
+
         </div>
         <div class="no_lunch" *ngIf="!lunch && !addInProgress">
           <h3>😱 No lunch. Plan one below:</h3>
           <form [formGroup]="form">
               <input type="text" formControlName="place" class="textInput" placeholder="Where?" >
-              {{this.form.get('place').value}}
               <ng2-flatpickr [config]="datePickerOptions" class="dateInput" formControlName="date" placeholder="When?"></ng2-flatpickr>
-              {{this.form.get('date').value}}
           </form>
         </div>
         <div class="add_in_progress" >
-          
+
         </div>
-        
-        <button class="add" (click)="addLunchPressed()">Add Lunch</button>
+
+        <button class="save" (click)="saveLunchPressed()">Save Lunch</button>
       </app-card>
 
       <app-card title="Search Restaurants">
@@ -35,4 +33,3 @@
       </app-card>
     </div>
   </div>
-  

@@ -85,10 +85,49 @@ button:hover {
   cursor: pointer;
 }
 
+.deleteButton {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+
+  img {
+    width: 10px;
+    height: 10px;
+    margin-bottom: 1px;
+  }
+
+  &:hover {
+    background-color: rgb(241, 241, 241);
+    cursor: pointer;
+  }
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .textInput {
   border: 0;
   outline: 0;
   font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+
+  &::placeholder { /* Most modern browsers support this now. */
+    font-weight: normal;
+    color:    rgb(158, 158, 158);
+  }
+}
+
+.textInputSmall {
+  border: 0;
+  outline: 0;
+  font-size: 20px;
   font-weight: bold;
   width: 100%;
 

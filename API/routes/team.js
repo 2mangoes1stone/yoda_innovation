@@ -54,9 +54,22 @@ router.patch('/teams/:id', (req,res) => {
     })
 })
 
+// Replace
+router.put('/teams/:id', (req,res) => {
+  const oldTeam = Team.findById(req.params.id)
+  const updatedTeam = req.body
+  oldTeam.update(updatedTeam)
+    .then(() => {
+      res.json(updatedTeam)
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
+})
+
 
 // Delete
-router.delete('/team/:id', (req,res) => {
+router.delete('/teams/:id', (req,res) => {
   const team = Team.findById(req.params.id)
   team.remove()
     .then(() => {

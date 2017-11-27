@@ -5,25 +5,40 @@
   >
   </app-header>
   <div class="cards">
-    <app-card title="Current Iteration">
-      <ul>
-        <li *ngFor="let goal of currentGoals.goals">
+    <app-card title="Current Iteration - {{iterationNumber}}" >
+      <ul *ngIf="currentGoals">
+        <li *ngFor="let goal of currentGoals">
           <div class="checkbox">
-            <input type="checkbox" (change)="saveStatus(goal)" name="checkbox" id="checkbox1" [checked]="goal.complete">
-            <label for="checkbox1">{{goal.name}}</label>
+            <div class="checkbox-content">
+              <input type="checkbox" (change)="saveStatus(goal)" name="checkbox" id="checkbox1" [checked]="goal.done">
+              <label for="checkbox1">{{goal.description}}</label>
+            </div>
+            <button class="deleteButton" (click)="deleteGoalPressed(goal)">
+              <img src="assets/images/close-button.svg" alt="Close">
+            </button>
           </div>
+
         </li>
       </ul>
+      <h3 *ngIf="!currentGoals">No goals found. Try adding one below:</h3>
+
+      <form [formGroup]="form" *ngIf="addInProgress" (ngSubmit)="saveGoalPressed()">
+        <input type="text" class="textInputSmall" formControlName="goalDesc" placeholder="Goal..." autofocus>
+        <button type="submit" class="save" *ngIf="addInProgress" required>Save goal</button>
+      </form>
+
+      <button class="new" (click)="newGoalPressed()" *ngIf="!addInProgress">New goal</button>
     </app-card>
     <app-card title="Last Iteration">
-      <ul>
-        <li *ngFor="let goal of currentGoals.goals">
-          <div class="checkbox">
-            <input type="checkbox" (change)="saveStatus(goal)" name="checkbox" id="checkbox1" [checked]="goal.complete">
-            <label for="checkbox1">{{goal.name}}</label>
-          </div>
-        </li>
-      </ul>
+
+    </app-card>
+    <app-card title="Actions">
+      <form [formGroup]="newIterationForm" *ngIf="addIterationInProgress" (ngSubmit)="saveIterationPressed()">
+        <input type="text" class="textInputSmall" formControlName="iterationNumber" placeholder="Iteration number..." autofocus>
+        <button type="submit" class="save" *ngIf="addIterationInProgress" required>Save iteration</button>
+      </form>
+      <button class="new" (click)="newIterationPressed()" *ngIf="!addIterationInProgress">Create iteration</button>
+
     </app-card>
   </div>
 </div>

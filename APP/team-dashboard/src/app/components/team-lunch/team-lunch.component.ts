@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FlatpickrOptions } from 'ng2-flatpickr/ng2-flatpickr';
 import { FormGroup, FormControl } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-team-lunch',
@@ -25,7 +26,7 @@ export class TeamLunchComponent implements OnInit {
     this.color = '';
     this.addInProgress = false;
 
-    let date = new Date();
+    const date = new Date();
     date.setDate(date.getDate() + 1);
     date.setHours(12);
     date.setMinutes(0);
@@ -43,14 +44,16 @@ export class TeamLunchComponent implements OnInit {
 
   }
 
-  addLunchPressed(): void {
+  saveLunchPressed(): void {
     this.addInProgress = true;
     console.log(this.place);
+    const date = this.form.get('date').value;
+
     this.lunch = {
       place: this.form.get('place').value,
       date: this.form.get('date').value,
       booked: false
-    }
+    };
   }
 
   dateHasPassed(): boolean {
