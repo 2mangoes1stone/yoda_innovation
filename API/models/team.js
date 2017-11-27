@@ -8,9 +8,17 @@ const retroSchema = [{
 	}
 }];
 
+const goalsSchema = [{
+	"todo": {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Goal'
+	}
+}];
+
 const teamSchema = mongoose.Schema({
 	teamName: String,
-	retro: retroSchema
+	retro: retroSchema,
+	goals: goalsSchema
 });
 
 const Team = mongoose.model('Team', teamSchema);

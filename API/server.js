@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const retroRouter = require('./routes/retro');
 const teamsRouter = require('./routes/team');
+const goalsRouter = require('./routes/goals');
 const authRouter = require('./routes/auth');
 
 const server = express();
@@ -26,7 +27,8 @@ server.get('/', function(request, response) {
 server.use(authRouter);
 server.use('/api', [
   retroRouter,
-  teamsRouter
+  teamsRouter,
+  goalsRouter
 ]);
 
 // Handle errors by returning JSON

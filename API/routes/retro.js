@@ -5,7 +5,6 @@ const router = express.Router();
 // Get a list of retro
 router.get('/retro', (req, res) => {  
   Retro.find()
-  // .populate('retroAction.action')
   .then((retro) => {
     res.json(retro)
   })
@@ -18,7 +17,6 @@ router.get('/retro', (req, res) => {
 router.get('/retro/:id', (req,res) => {
   const id = req.params.id
   Retro.findById(id)
-    // .populate('retroAction.action')
     .then((retro) => {
       res.json(retro)
     })
