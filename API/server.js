@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const retroRouter = require('./routes/retro');
 const teamsRouter = require('./routes/team');
 const authRouter = require('./routes/auth');
+const cors = require('cors');
 
 const server = express();
 
@@ -12,10 +13,10 @@ const server = express();
 server.use(bodyParser.json());
 
 
-// // CORS
-// server.use(cors({
-//   origin: process.env.CORS_ORIGINS,
-// }));
+// CORS
+server.use(cors({
+  origin: process.env.CORS_ORIGINS,
+}));
 
 // test route
 server.get('/', function(request, response) {
